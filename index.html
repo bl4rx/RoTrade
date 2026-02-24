@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Roblox Trade Value Calculator (Rolimon's)</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <header>
+    <h1>Roblox Trade Value Calculator</h1>
+    <p class="sub">
+      Uses Rolimon’s limited item data (cached). Avoids projected items by default.
+    </p>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>Add items</h2>
+
+      <div class="row">
+        <label>
+          Search item name (optional)
+          <input id="search" placeholder="e.g. dominus, valk, cap..." />
+        </label>
+        <button id="btnSearch">Search</button>
+      </div>
+
+      <div class="row">
+        <label>
+          Or add by Item ID
+          <input id="itemId" placeholder="1028606" />
+        </label>
+        <select id="side">
+          <option value="offer">Add to Your Offer</option>
+          <option value="request">Add to Their Items</option>
+        </select>
+        <button id="btnAddById">Add</button>
+      </div>
+
+      <div id="searchResults" class="results"></div>
+    </section>
+
+    <section class="grid">
+      <section class="card">
+        <h2>Your Offer</h2>
+        <div id="offerList" class="list"></div>
+        <div class="totals" id="offerTotals"></div>
+        <button class="danger" id="clearOffer">Clear offer</button>
+      </section>
+
+      <section class="card">
+        <h2>Their Items</h2>
+        <div id="requestList" class="list"></div>
+        <div class="totals" id="requestTotals"></div>
+        <button class="danger" id="clearRequest">Clear request</button>
+      </section>
+    </section>
+
+    <section class="card">
+      <h2>Options</h2>
+      <div class="grid2">
+        <label>Equal tolerance (%) <input id="tol" type="number" min="0" max="25" value="3"></label>
+        <label>Max overpay for “better” (%) <input id="overpay" type="number" min="0" max="50" value="10"></label>
+        <label>Max results <input id="maxResults" type="number" min="5" max="100" value="25"></label>
+        <label class="check">
+          <input id="avoidProjected" type="checkbox" checked>
+          Avoid projected items
+        </label>
+      </div>
+      <button id="btnCalc" class="primary">Calculate + Suggest trades</button>
+
+      <div id="calcOut" class="calc"></div>
+    </section>
+
+    <footer>
+      <small>
+        Data source: Rolimon’s Item Details endpoint. Respect rate limits.
+      </small>
+    </footer>
+  </main>
+
+  <script src="./app.js"></script>
+</body>
+</html>
